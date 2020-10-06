@@ -11,7 +11,7 @@ def main():
     for j in range (0, height):
       maze[i][j] = fileLine[j]
 
-  print(maze[9][9])
+  print(maze[20][30])
 
   
 
