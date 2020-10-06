@@ -1,6 +1,6 @@
 
 def main():
-  print('lolzim')
+  print('teste')
 
 
 # Tell python to run main method
