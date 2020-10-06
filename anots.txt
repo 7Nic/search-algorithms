@@ -1,0 +1,10 @@
+Heurística para as buscas informadas:
+f(n) = g(n) + h(n), em que:
+- g é o custo para alcançar o nó atual desde o início
+- h é a estimativa do custo para o nó destino
+- f é a estimativa total
+
+Podemos usar distância Manhattan, soma das distâncias dos eixos.
+Ex.: (1,2) e (5,6) tem a distância: (5-1)+(6-2) = 8
+=================================================
+Coordenadas da seguinte forma (L,C)
