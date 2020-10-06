@@ -8,3 +8,7 @@ Podemos usar distância Manhattan, soma das distâncias dos eixos.
 Ex.: (1,2) e (5,6) tem a distância: (5-1)+(6-2) = 8
 =================================================
 Coordenadas da seguinte forma (L,C)
+=================================================
+A quantidade de execução precisa ser bem grande.
+
+Sobre o melhor caminho: de todos os caminhos encontrados pelo algoritmo, considere o melhor.
