@@ -1,17 +1,23 @@
-
-def main():
+def readMaze():
   f = open("../mazes/maze1.txt", "r")
-  mazeInfo = f.readline().split()
-  width = int(mazeInfo[0])
-  height = int(mazeInfo[1])
-  maze = [[0 for x in range(width)] for y in range(height)] 
+  firstLine = f.readline()
+  mazeInfo = firstLine.split()
+  lines = int(mazeInfo[0])
+  columns = int(mazeInfo[1])
+
   
-  for i in range (0, width):
+  maze = [[0 for x in range(columns)] for y in range(lines)] 
+  for i in range (0, lines):
     fileLine = f.readline()
-    for j in range (0, height):
+    for j in range (0, columns):
       maze[i][j] = fileLine[j]
 
-  print(maze[20][30])
+  return (maze, lines, columns)
+
+
+def main():
+  maze, lines, columns = readMaze()
+  print(maze[0][0])
 
   
 
