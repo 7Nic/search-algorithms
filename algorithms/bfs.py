@@ -59,7 +59,7 @@ def bfs(grid, start, end, lines, columns):
     if ((i,j) in visited): continue
 
     visited.add((i,j))
-    print("Visitando: (",i,",",j,")")
+    # print("Visitando: (",i,",",j,")")
 
     if ((i,j) == end):
       print("Achamos a saída em ", i, j)
@@ -75,7 +75,7 @@ def bfs(grid, start, end, lines, columns):
       q.put((i-1,j))
 
 def main():
-  maze = readMaze("maze1.txt")
+  maze = readMaze("maze20.txt")
   bfs(maze.grid, (maze.startI, maze.startJ), (maze.endI, maze.endJ), maze.lines, maze.columns)
 
 
