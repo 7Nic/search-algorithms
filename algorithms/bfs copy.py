@@ -49,40 +49,34 @@ def insideGrid(i, j, lines, columns):
 
 def bfs(grid, start, end, lines, columns):
   q = queue.Queue() 
-  path = [start]
-  q.put((start, [start]))
+  q.put(start)
 
   visited = set()
 
   while(not q.empty()):
-    node, path = q.get()
-    i = node[0]
-    j = node[1]
+    i, j = q.get()
+
     if ((i,j) in visited): continue
 
     visited.add((i,j))
-    # print("Visitando: (",i,",",j,")")
+    print("Visitando: (",i,",",j,")")
 
     if ((i,j) == end):
       print("Achamos a saída em ", i, j)
-      return path
+      return
 
     if (insideGrid(i,j+1,lines,columns) and grid[i][j+1] != WALL and (i,j+1) not in visited):
-      newPath = path + [(i,j+1)]
-      q.put(((i,j+1), newPath))
+      q.put((i,j+1))
     if (insideGrid(i,j-1,lines,columns) and grid[i][j-1] != WALL and (i,j-1) not in visited):
-      newPath = path + [(i,j-1)]
-      q.put(((i,j-1), newPath))
+      q.put((i,j-1))
     if (insideGrid(i+1,j,lines,columns) and grid[i+1][j] != WALL and (i+1,j) not in visited):
-      newPath = path + [(i+1,j)]
-      q.put(((i+1,j), newPath))
+      q.put((i+1,j))
     if (insideGrid(i-1,j,lines,columns) and grid[i-1][j] != WALL and (i-1,j) not in visited):
-      newPath = path + [(i-1,j)]
-      q.put(((i-1,j), newPath))
+      q.put((i-1,j))
 
 def main():
-  maze = readMaze("maze10.txt")
-  path = bfs(maze.grid, (maze.startI, maze.startJ), (maze.endI, maze.endJ), maze.lines, maze.columns)
-  print(path)
+  maze = readMaze("maze2.txt")
+  bfs(maze.grid, (maze.startI, maze.startJ), (maze.endI, maze.endJ), maze.lines, maze.columns)
+
 
 if __name__ == "__main__": main()
