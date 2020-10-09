@@ -64,7 +64,7 @@ def bfs(grid, start, end, lines, columns):
     # print("Visitando: (",i,",",j,")")
 
     if ((i,j) == end):
-      print("End found in:(", i, ",", j,")")
+      # print("End found in:(", i, ",", j,")")
       return path
 
     if (insideGrid(i,j+1,lines,columns) and grid[i][j+1] != WALL and (i,j+1) not in visited):
@@ -82,10 +82,11 @@ def bfs(grid, start, end, lines, columns):
 
 def main():
   start_time = time.time()*1000
-  maze = readMaze("maze1.txt")
+  maze = readMaze("maze7.txt")
   path = bfs(maze.grid, (maze.startI, maze.startJ), (maze.endI, maze.endJ), maze.lines, maze.columns)
-  print("Path:", path)
+  # print("Path:", path)
   milliseconds = time.time()*1000 - start_time
-  print("Execution time:", milliseconds, "ms; or", milliseconds/1000, "s; or", milliseconds/60000, "min")
+  # print("Execution time:", milliseconds, "ms; or", milliseconds/1000, "s; or", milliseconds/60000, "min")
+  print("Execution time:", milliseconds, "ms")
 
 if __name__ == "__main__": main()
