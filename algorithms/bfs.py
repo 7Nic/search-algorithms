@@ -31,7 +31,6 @@ def readMaze(fileName):
     fileLine = f.readline()
     for j in range (0, columns):
       maze[i][j] = fileLine[j]
-      # print("Vendo", i, j, fileLine[j])
       if (fileLine[j] == START):
         startI = i
         startJ = j
@@ -65,7 +64,7 @@ def bfs(grid, start, end, lines, columns):
     # print("Visitando: (",i,",",j,")")
 
     if ((i,j) == end):
-      print("Achamos a saída em ", i, j)
+      print("End found in:(", i, ",", j,")")
       return path
 
     if (insideGrid(i,j+1,lines,columns) and grid[i][j+1] != WALL and (i,j+1) not in visited):
@@ -82,13 +81,11 @@ def bfs(grid, start, end, lines, columns):
       q.put(((i-1,j), newPath))
 
 def main():
-  maze = readMaze("maze10.txt")
+  start_time = time.time()*1000
+  maze = readMaze("maze1.txt")
   path = bfs(maze.grid, (maze.startI, maze.startJ), (maze.endI, maze.endJ), maze.lines, maze.columns)
-  print(path)
+  print("Path:", path)
+  milliseconds = time.time()*1000 - start_time
+  print("Execution time:", milliseconds, "ms; or", milliseconds/1000, "s; or", milliseconds/60000, "min")
 
-# if __name__ == "__main__": main()
-start_time = time.time()*1000
-main()
-milliseconds = time.time()*1000 - start_time
-print(milliseconds)
-# print('Time Taken:', time.strftime("%H:%M:%S",time.gmtime(milliseconds)))
+if __name__ == "__main__": main()
