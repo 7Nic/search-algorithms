@@ -1,4 +1,5 @@
 import queue
+import time
 
 # ===== Constants =====
 START = "#"
@@ -85,4 +86,9 @@ def main():
   path = bfs(maze.grid, (maze.startI, maze.startJ), (maze.endI, maze.endJ), maze.lines, maze.columns)
   print(path)
 
-if __name__ == "__main__": main()
+# if __name__ == "__main__": main()
+start_time = time.time()*1000
+main()
+milliseconds = time.time()*1000 - start_time
+print(milliseconds)
+# print('Time Taken:', time.strftime("%H:%M:%S",time.gmtime(milliseconds)))
