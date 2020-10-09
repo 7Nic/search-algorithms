@@ -82,7 +82,7 @@ def bfs(grid, start, end, lines, columns):
 
 def main():
   start_time = time.time()*1000
-  maze = readMaze("maze7.txt")
+  maze = readMaze("maze15.txt")
   path = bfs(maze.grid, (maze.startI, maze.startJ), (maze.endI, maze.endJ), maze.lines, maze.columns)
   # print("Path:", path)
   milliseconds = time.time()*1000 - start_time
