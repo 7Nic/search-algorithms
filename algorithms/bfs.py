@@ -66,30 +66,31 @@ def bfs(grid, start, end, lines, columns):
 
     if ((i,j) == end):
       # print("End found in:(", i, ",", j,")")
-      return path
+      return path, visited
 
-    if (insideGrid(i,j+1,lines,columns) and grid[i][j+1] != WALL and (i,j+1) not in visited):
-      newPath = path + [(i,j+1)]
-      q.put(((i,j+1), newPath))
-    if (insideGrid(i,j-1,lines,columns) and grid[i][j-1] != WALL and (i,j-1) not in visited):
-      newPath = path + [(i,j-1)]
-      q.put(((i,j-1), newPath))
     if (insideGrid(i+1,j,lines,columns) and grid[i+1][j] != WALL and (i+1,j) not in visited):
       newPath = path + [(i+1,j)]
       q.put(((i+1,j), newPath))
+    if (insideGrid(i,j+1,lines,columns) and grid[i][j+1] != WALL and (i,j+1) not in visited):
+      newPath = path + [(i,j+1)]
+      q.put(((i,j+1), newPath))
     if (insideGrid(i-1,j,lines,columns) and grid[i-1][j] != WALL and (i-1,j) not in visited):
       newPath = path + [(i-1,j)]
       q.put(((i-1,j), newPath))
+    if (insideGrid(i,j-1,lines,columns) and grid[i][j-1] != WALL and (i,j-1) not in visited):
+      newPath = path + [(i,j-1)]
+      q.put(((i,j-1), newPath))
+    
+    
+    
 
 def main():
   start_time = time.time()*1000
-  maze = readMaze("maze9.txt")
-  path = bfs(maze.grid, (maze.startI, maze.startJ), (maze.endI, maze.endJ), maze.lines, maze.columns)
+  maze = readMaze("maze-2.txt")
+  path, visited = bfs(maze.grid, (maze.startI, maze.startJ), (maze.endI, maze.endJ), maze.lines, maze.columns)
   print("Path:", path)
   milliseconds = time.time()*1000 - start_time
-  # print("Execution time:", milliseconds, "ms; or", milliseconds/1000, "s; or", milliseconds/60000, "min")
   print("Execution time:", milliseconds, "ms")
-
-  drawMaze(maze.grid, maze.lines, maze.columns, path)
+  drawMaze(maze.grid, maze.lines, maze.columns, path, visited)
 
 if __name__ == "__main__": main()
