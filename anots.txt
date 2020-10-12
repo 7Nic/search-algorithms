@@ -1,14 +1,23 @@
 Heurística para as buscas informadas:
 f(n) = g(n) + h(n), em que:
+- f é a estimativa total
 - g é o custo para alcançar o nó atual desde o início
 - h é a estimativa do custo para o nó destino
-- f é a estimativa total
 
-Podemos usar distância Manhattan, soma das distâncias dos eixos.
+No nosso projeto, vamos usar mais de uma heurística
+
+A distância Manhattan (soma das distâncias dos eixos) do ponto de análise até a posição de fim do labirinto.
 Ex.: (1,2) e (5,6) tem a distância: (5-1)+(6-2) = 8
 =================================================
 Coordenadas da seguinte forma (L,C)
 =================================================
-A quantidade de execução precisa ser bem grande.
-
 Sobre o melhor caminho: de todos os caminhos encontrados pelo algoritmo, considere o melhor.
+
+Usar labirintos feitos na mao para forçar as diferenças dos algoritmos. Labirintos que há muitas opção de escolha.
+Por exemplo, um que comece no meio do labirinto e que mal tenha corredores, que tenha muita liberdade (atrapalha o bfs e dfs).
+
+Usar maneiras de exibir o labirinto com desenho. (alguma biblioteca que desenhe uma matriz com cores)
+Exibir não só o caminho final, mas também todos os nós visitados.
+
+=================================================
+No relatório falar de otimismo para as heurísticas, se foi otimista, se é o máximo possível...

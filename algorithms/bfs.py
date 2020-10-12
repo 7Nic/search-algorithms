@@ -1,5 +1,6 @@
 import queue
 import time
+from draw_maze_function import drawMaze
 
 # ===== Constants =====
 START = "#"
@@ -18,7 +19,7 @@ class Maze():
         self.endI = endI
         self.endJ = endJ
 
-# ===== Functions =====
+# ===== Functions =====  
 def readMaze(fileName):
   f = open("../mazes/"+fileName, "r")
   firstLine = f.readline()
@@ -82,11 +83,13 @@ def bfs(grid, start, end, lines, columns):
 
 def main():
   start_time = time.time()*1000
-  maze = readMaze("maze15.txt")
+  maze = readMaze("maze9.txt")
   path = bfs(maze.grid, (maze.startI, maze.startJ), (maze.endI, maze.endJ), maze.lines, maze.columns)
-  # print("Path:", path)
+  print("Path:", path)
   milliseconds = time.time()*1000 - start_time
   # print("Execution time:", milliseconds, "ms; or", milliseconds/1000, "s; or", milliseconds/60000, "min")
   print("Execution time:", milliseconds, "ms")
+
+  drawMaze(maze.grid, maze.lines, maze.columns, path)
 
 if __name__ == "__main__": main()
