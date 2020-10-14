@@ -106,7 +106,7 @@ def A_start(grid, start, end, lines, columns):
 
 def main():
   start_time = time.time()*1000
-  maze = readMaze("maze-5.txt")
+  maze = readMaze("maze-1.txt")
   path, visited = A_start(maze.grid, (maze.startI, maze.startJ), (maze.endI, maze.endJ), maze.lines, maze.columns)
   print("Path:", path)
   milliseconds = time.time()*1000 - start_time
