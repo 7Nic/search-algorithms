@@ -9,8 +9,9 @@ START = "#"
 END = "$"
 PATH = "*"
 WALL = "-"
-HEURISTIC = "manhattan"
-# HEURISTIC = "euclidian"
+# HEURISTIC = "manhattan" 
+HEURISTIC = "euclidian"
+HEURISTIC_FACTOR = 40 #How many times h is more important than g
 
 # ===== Classes =====
 class Maze():               
@@ -25,9 +26,9 @@ class Maze():
 
 # ===== Functions =====  
 def fFunction(steps, curPos, end, type):
-  if (type == "manhattan"): distance = abs(curPos[0]-end[0]) + abs(curPos[1]-end[1])
+  if (type == "manhattan"): distance = (abs(curPos[0]-end[0]) + abs(curPos[1]-end[1]))*HEURISTIC_FACTOR
 
-  if (type == "euclidian"): distance = math.sqrt((curPos[0] - end[0])**2 + (curPos[1] - end[1])**2)
+  if (type == "euclidian"): distance = (math.sqrt((curPos[0] - end[0])**2 + (curPos[1] - end[1])**2))*HEURISTIC_FACTOR
   
   # f = g + h
   return (steps + 1) + distance
@@ -105,10 +106,10 @@ def A_start(grid, start, end, lines, columns):
 
 def main():
   start_time = time.time()*1000
-  maze = readMaze("maze7.txt")
+  maze = readMaze("maze-2.txt")
   path, visited = A_start(maze.grid, (maze.startI, maze.startJ), (maze.endI, maze.endJ), maze.lines, maze.columns)
-  print("Path:", path)
   milliseconds = time.time()*1000 - start_time
+  print("Path:", path)
   print("Execution time:", milliseconds, "ms")
   drawMaze(maze.grid, maze.lines, maze.columns, path, visited)
 
