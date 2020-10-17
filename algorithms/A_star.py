@@ -18,7 +18,7 @@ class Maze():
         self.lines = lines
         self.columns = columns
         self.startI = startI
-        self.startJ = startJ
+        self.startJ = startJ  
         self.endI = endI
         self.endJ = endJ
 
@@ -104,7 +104,7 @@ def A_start(grid, start, end, lines, columns):
 
 def main():
   start_time = time.time()*1000
-  maze = readMaze("maze1.txt")
+  maze = readMaze("maze15.txt")
   path, visited = A_start(maze.grid, (maze.startI, maze.startJ), (maze.endI, maze.endJ), maze.lines, maze.columns)
   milliseconds = time.time()*1000 - start_time
   print("Path:", path)

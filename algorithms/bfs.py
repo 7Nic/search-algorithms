@@ -1,3 +1,5 @@
+
+
 import queue
 import time
 from draw_maze_function import drawMaze
@@ -49,7 +51,9 @@ def insideGrid(i, j, lines, columns):
   return True
 
 def bfs(grid, start, end, lines, columns):
+  #cria uma fila
   q = queue.Queue() 
+  #inicializa o caminho
   path = [start]
   q.put((start, [start]))
 
@@ -59,14 +63,17 @@ def bfs(grid, start, end, lines, columns):
     node, path = q.get()
     i = node[0]
     j = node[1]
+    #se o no ja foi visitado pula o loop
     if ((i,j) in visited): continue
 
     visited.add((i,j))
     # print("Visitando: (",i,",",j,")")
 
+    #se é o final para ali e retorna as listas
     if ((i,j) == end):
       # print("End found in:(", i, ",", j,")")
       return path, visited
+
 
     if (insideGrid(i+1,j,lines,columns) and grid[i+1][j] != WALL and (i+1,j) not in visited):
       newPath = path + [(i+1,j)]
@@ -85,12 +92,17 @@ def bfs(grid, start, end, lines, columns):
     
 
 def main():
+  #pega o tempo inicial
   start_time = time.time()*1000
-  maze = readMaze("maze1.txt")
+  #le o labirinto
+  maze = readMaze("maze11.txt")
+  #realiza a busca retornando o caminho
   path, visited = bfs(maze.grid, (maze.startI, maze.startJ), (maze.endI, maze.endJ), maze.lines, maze.columns)
+  # calcula o tempo de execução
   milliseconds = time.time()*1000 - start_time
   # print("Path:", path)
   print("Execution time:", milliseconds, "ms")
+  #desenha o labirinto
   drawMaze(maze.grid, maze.lines, maze.columns, path, visited)
 
 if __name__ == "__main__": main()
